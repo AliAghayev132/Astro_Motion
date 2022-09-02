@@ -31,7 +31,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     padding: 0 30px;
-    height: 100vh;
+    height: 105vh;
 
 }
 
@@ -58,6 +58,7 @@ video {
 .circle {
     position: absolute;
     width: 20px;
+    bottom: -10px;
     height: 20px;
     left: calc(50% - 10px);
     border-radius: 50%;
@@ -83,6 +84,24 @@ video {
 }
 .content__container section{
     display: none;
+}
+.position__abs__menu{
+    z-index: 100;
+    top: 75%;
+    right: 0;
+    display: flex!important;
+    background-color: #354B60;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+}
+.position__abs__menu li{
+    width: 80%;
+    text-align: center;    
+    margin-bottom: 20px;
+    margin: 9 15px;
+    font-size: 19px;
+    line-height: 1.5;
 }
 /* #endregion */
 /* #region Nav,Navbar */
@@ -110,6 +129,7 @@ nav {
 }
 
 .nav__right {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,11 +146,31 @@ nav {
 }
 
 .nav__item a {
+    display: block;
     padding: 15px 65px;
     font-size: 24px;
     border-bottom: 1px solid white;
 }
-
+.nav__toggle__button{
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 0.25rem;
+    display: none;
+    padding: 4px 12px;
+    line-height: 1;
+    font-size: 1.25rem;
+    background-color: transparent;
+}
+.nav__toggle__button span{
+    pointer-events: none;
+    vertical-align: middle;
+    background-size: 100%;
+    background-position: center;
+    display: inline-block;
+    background-image: url("../img/toggle.svg");
+    width: 30px;
+    height: 30px;
+}
 /* #endregion */
 /* #region Home */
 .section__home{
@@ -340,21 +380,36 @@ footer{
         opacity: 1;
     }
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1230px) {
     .nav__item a{
         padding: 15px 45px;
     }
 }
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1070px) {
     .nav__item a{
         font-size: 19.2px;
     }
 }
-@media only screen and (max-width: 985px) {
+@media only screen and (max-width: 1005px) {
     .nav__item a{
         font-size: 19.2px;
     }
     .nav__right ul{
         display: none;
     }
+    .nav__toggle__button{
+        display: block;
+    }
+    .home__main{
+        margin-left: 0;
+    }
+}
+@media only screen and (max-width: 630px) {
+    .home__content{
+        flex-direction: column;
+    }
+    .home__content__right{
+        display: flex;
+    }
+    
 }
