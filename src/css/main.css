@@ -1,0 +1,360 @@
+
+/* #region Custom Css */
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url("../fonts/SourceSansProLight.ttf");
+}
+
+.display--block{
+    display: block!important;
+    animation: fadein .5s;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Source Sans Pro";
+    list-style-type: none;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+body {
+    line-height: 1.5;
+    font-size: 19px;
+    font-weight: 300;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 30px;
+    height: 100vh;
+
+}
+
+body {
+    background-color: black;
+}
+
+.content__container {
+    margin: 0 52.8px;
+    padding: 48px 12px;
+}
+
+video {
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    left: 50%;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    z-index: -10;
+}
+.circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: calc(50% - 10px);
+    border-radius: 50%;
+    background-color: white;
+}
+.circle--left-top{
+    left: 0;
+    top: -11px;
+}
+.circle--left-bottom{
+    left: 0;
+    bottom: -10px;
+}
+.circle--right-top{
+    left: auto;
+    right: 0;
+    top: -10px;
+}
+.circle--right-bottom{
+    right: 0;
+    left: auto;
+    bottom:  -10px;
+}
+.content__container section{
+    display: none;
+}
+/* #endregion */
+/* #region Nav,Navbar */
+.navbar {
+    padding: 0 12px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.navbar__main {
+    padding: 8px 0;
+    margin-top: 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.logo {
+    margin-right: 16px;
+    padding: 5px 0;
+    font-size: 2.4rem;
+}
+
+.nav__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav__right ul {
+    display: flex;
+    justify-content: center;
+}
+
+.nav__item {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav__item a {
+    padding: 15px 65px;
+    font-size: 24px;
+    border-bottom: 1px solid white;
+}
+
+/* #endregion */
+/* #region Home */
+.section__home{
+    padding: 16px;
+}
+.home__main{
+    margin-left: 100px;
+    max-width: 810px;
+}
+.home__content{
+    display: flex;
+    position: relative;
+    padding: 48px 0;
+    border-top: 1px solid white;
+    border-bottom:  1px solid white;
+}
+.home__content__left{
+    margin-right: 20px;
+    padding: 30px 40px;
+    max-width: 505px;
+    background-color: rgba(0,0,0,.3);
+}
+.home__title{
+    margin-bottom: 28px;
+    font-size: 28.8px;
+    color: white;
+}
+.home__description-1{
+    color: white;
+    margin-bottom: 28px;
+    font-size: 19px;
+
+}
+.home__description-2{
+    color: white;
+    font-size: 19px;
+}
+.home__image{
+    margin-bottom: 20px;
+}
+.home__content__right img{
+    max-width: 100%;
+    height: auto;
+}
+.home__content--2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.home__button{
+    border: none;
+    margin-top: 25px;
+    padding: 13px 23px;
+    font-size: 20.8px;
+    border-radius:0;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+}
+/* #endregion */
+/* #region Gallery */
+.section__gallery{
+    border-top: 1px solid white;
+    margin: auto;
+    max-width: 1300px;
+    position: relative;
+}
+.gallery__main{
+    margin-bottom: 30px;
+    padding-top: 48px;
+}
+.gallery__card{
+    position: relative;
+    max-width: 240px;
+    margin: 0 10px;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+}
+/* #endregion */
+/* #region About */
+.about__main{
+    position: relative;
+    margin-right: 100px;
+    margin-left: auto;
+    max-width: 810px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 48px 0;
+}
+.about__content{
+    padding: 40px 30px;
+    background-color: rgba(0,0,0,.3);
+}
+.about__content *{
+    color: white;
+}
+.about__title{
+    margin-bottom: 24px;
+}
+.about__description--1{
+    margin-bottom: 24px;
+}
+/* #endregion */
+/* #region Contact */
+.contact__main{
+    max-width: 912px;
+    margin: 0 auto;
+    font-weight: 500;
+    color: white;
+}
+.contact__row{
+    display: flex;
+}
+.contact__row__1__right{
+    padding: 0 12px;
+    margin-left: 468px;
+}
+.contact__title{
+    margin-bottom: 24px;
+    font-size: 28.8px;
+}
+.contact__row__2__left{
+    width: 50%;
+    padding: 0 55px 0 12px;
+}
+.contact__form__item{
+    display: flex;
+    margin-bottom: 30px;
+    align-items: stretch;
+    position: relative;
+    flex-wrap: wrap;
+    width: 100%;
+}
+::placeholder{
+    color: white;
+}
+.contact__form__item *:focus{
+    border-color: green;
+}
+.contact__row__2{
+    display: flex;
+}
+.contact__form__item *{
+    font-size: 1.2rem;
+    color: white;
+    outline: none;
+    flex: 1 1 auto;
+    border: none;
+    font-family: "Source Sans Pro";
+    position: relative;
+    width: 1%;
+    padding: 15px 0;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+}
+.contact__form__item--last{
+    display: flex;
+    justify-content: end;
+}
+.contact__form__button{
+    border: none;
+    border-radius: 0;
+    width: max-content;
+    font-size: 1.3rem;
+    align-self: flex-end;
+    display: inline-block;
+    padding: 10px 38px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: white;
+}
+.contact__row__2__right{
+    width: 50%;
+    padding: 0 12px;
+}
+.contact__description--1{
+    font-size: 19px;
+    margin-bottom: 24px;
+}
+.contact__description--2{
+    font-size: 19px;
+    margin-bottom: 45px;
+}
+.contact__map{
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+/* #endregion */
+/* #region Footer */
+footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 12px;
+    font-size: 19px;
+    color:white;
+}
+/* #endregion */
+
+@keyframes fadein {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .nav__item a{
+        padding: 15px 45px;
+    }
+}
+@media only screen and (max-width: 1023px) {
+    .nav__item a{
+        font-size: 19.2px;
+    }
+}
+@media only screen and (max-width: 985px) {
+    .nav__item a{
+        font-size: 19.2px;
+    }
+    .nav__right ul{
+        display: none;
+    }
+}
