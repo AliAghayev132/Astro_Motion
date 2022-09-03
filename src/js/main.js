@@ -1,33 +1,57 @@
-const toggleBtn = document.querySelector("#toggle__btn"),
-  navbar__items = document.querySelector(".navbar__items"),
+// #region Custom Js
+function qS(par) {
+  return document.querySelector(par);
+}
+function classAdd(par, class_name) {
+  par.classList.add(class_name);
+}
+function classRemove(par, class_name) {
+  par.classList.remove(class_name);
+}
+//#endregion
+// #region Initializing Section
+const toggleBtn = qS("#toggle__btn"),
+  navbar__items = qS(".navbar__items"),
   section = {
-    home: document.querySelector(".section__home"),
-    gallery: document.querySelector(".section__gallery"),
-    about: document.querySelector(".section__about"),
-    contact: document.querySelector(".section__contact"),
+    home: qS(".section__home"),
+    gallery: qS(".section__gallery"),
+    about: qS(".section__about"),
+    contact: qS(".section__contact")
   };
 let currentid = "home";
+// #endregion
+// #region Adding Events
 document.addEventListener("click", (e) => {
   const id = e.target.getAttribute("id");
+  id === "home2" ? id = "home" : "";
   if (
     (id === "home" || id === "gallery" || id === "about" || id === "contact") &&
     currentid !== id
-  ) {
+  )
     updatePage(id);
-  }
+
 });
 toggleBtn.addEventListener("click", (e) => {
   navbar__items.classList.toggle("position__abs__menu");
 });
+//#endregion
+// #region UpdatePage
 function updatePage(page) {
-  section[currentid].classList.remove("display--block");
-  section[page].classList.add("display--block");
-  let lastItem = document.querySelector("#" + currentid),
-    currentItem = document.querySelector("#" + page);
-  lastItem.classList.remove("color--green");
-  currentItem.classList.add("color--green");
-  lastItem.nextElementSibling.classList.remove("bg_color--green");
-  currentItem.nextElementSibling.classList.add("bg_color--green");
+  let lastItem = qS("#" + currentid),
+    currentItem = qS("#" + page);
+
+  classRemove(section[currentid], "display--block");
+  classAdd(section[page], "display--block");
 
   currentid = page;
+
+  classRemove(lastItem, "color--green");
+  classAdd(currentItem, "color--green");
+
+  classRemove(lastItem.nextElementSibling, "bg_color--green");
+  classAdd(currentItem.nextElementSibling, "bg_color--green");
+
 }
+// #endregion
+
+

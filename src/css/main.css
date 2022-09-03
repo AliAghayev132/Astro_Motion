@@ -539,3 +539,16 @@ footer {
         justify-content: center;
     }
 }
+@media only screen and (max-width: 495px) {
+    .home__title{
+        font-size: 24px;
+        text-align: center;
+    }
+    .container{
+        padding: 0 5px;
+    }
+    .home__content__left p{
+        font-size: 18px;
+        text-align: justify;
+    }
+}
