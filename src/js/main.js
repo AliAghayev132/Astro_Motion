@@ -22,8 +22,9 @@ let currentid = "home";
 // #endregion
 // #region Adding Events
 document.addEventListener("click", (e) => {
-  const id = e.target.getAttribute("id");
-  id === "home2" ? id = "home" : "";
+  let id = e.target.getAttribute("id");
+  id = (id === "gallery--2" ? "gallery" : id);
+  console.log(id);
   if (
     (id === "home" || id === "gallery" || id === "about" || id === "contact") &&
     currentid !== id
