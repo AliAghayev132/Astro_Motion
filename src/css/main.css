@@ -275,6 +275,9 @@ nav {
     justify-content: center;
 }
 
+.section__gallery{
+    position: relative;
+}
 .home__button {
     border: none;
     margin-top: 25px;
@@ -299,6 +302,7 @@ nav {
 .gallery__content{
     display: flex;
     position: relative;
+    transition: .3s ease all;
 }
 .gallery__card{
 
@@ -346,7 +350,18 @@ nav {
 .gallery__card:hover .gallery__card__image{
     transform: scale(1.1,1.1);
 }
-
+.gallery__arrow--left{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 30px;
+}
+.gallery__arrow--right  {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 30px;
+}
 /* #endregion */
 /* #region About */
 .about__main {

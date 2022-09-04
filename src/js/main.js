@@ -43,7 +43,11 @@ function updatePage(page) {
   classRemove(section[currentid], "display--block");
   classAdd(section[page], "display--block");
 
+  if (page === "gallery")
+    updateGallery();
+
   currentid = page;
+
 
   classRemove(lastItem, "color--green");
   classAdd(currentItem, "color--green");
@@ -56,16 +60,21 @@ function updatePage(page) {
 
 
 //#region Carousel 
-{
-  let content = qS(".gallery__content"),
+function updateGallery() {
+  let currentCard = 5;
+  const content = qS(".gallery__content"),
     main = qS(".gallery__main"),
-    cards = content.children,
-    margin_right = 25,
+    left_arrow = qS('.gallery__arrow--left'),
+    right_arrow = qS('.gallery__arrow--right'),
+    cards = content.children;
+
+  let margin_right = 25,
     width = main.getBoundingClientRect().width,
     card_width = (width - margin_right * 4) / 5;
-  for (let i of cards) {
+
+  for (let i of cards)
     i.style.width = card_width + 'px';
-  }
+
   content.style.width = (cards.length * card_width) + (margin_right * cards.length) + 'px';
   window.addEventListener('resize', () => {
     let width = main.getBoundingClientRect().width;
@@ -73,7 +82,28 @@ function updatePage(page) {
     for (let i of cards) {
       i.style.width = card_width + 'px';
     }
-
   })
+
+  right_arrow.addEventListener('click', () => {
+    currentCard += 3;
+    console.log(currentCard);
+    if (currentCard > cards.length) {
+      currentCard = cards.length;
+    }
+
+    let temp = (card_width * (currentCard - 5)) + (margin_right * (currentCard - 6));
+    content.style.transform = `translateX(${-temp}px)`;
+  })
+  left_arrow.addEventListener('click', () => {
+    currentCard -= 3;
+    console.log(currentCard)
+    if (currentCard < 5) {
+      currentCard = 5;
+    }
+    console.log(currentCard)
+    let temp = (card_width * (currentCard - 5)) + (margin_right * (currentCard - 5));
+    content.style.transform = `translateX(${-temp}px)`;
+  })
+
 }
 //#endregion
