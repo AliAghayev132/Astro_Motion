@@ -9,7 +9,7 @@ function classRemove(par, class_name) {
   par.classList.remove(class_name);
 }
 //#endregion
-// #region Initializing Section
+// #region Initializing Sections and Variables
 const toggleBtn = qS("#toggle__btn"),
   navbar__items = qS(".navbar__items"),
   section = {
@@ -24,7 +24,6 @@ let currentid = "home";
 document.addEventListener("click", (e) => {
   let id = e.target.getAttribute("id");
   id = (id === "gallery--2" ? "gallery" : id);
-  console.log(id);
   if (
     (id === "home" || id === "gallery" || id === "about" || id === "contact") &&
     currentid !== id
@@ -56,3 +55,25 @@ function updatePage(page) {
 // #endregion
 
 
+//#region Carousel 
+{
+  let content = qS(".gallery__content"),
+    main = qS(".gallery__main"),
+    cards = content.children,
+    margin_right = 25,
+    width = main.getBoundingClientRect().width,
+    card_width = (width - margin_right * 4) / 5;
+  for (let i of cards) {
+    i.style.width = card_width + 'px';
+  }
+  content.style.width = (cards.length * card_width) + (margin_right * cards.length) + 'px';
+  window.addEventListener('resize', () => {
+    let width = main.getBoundingClientRect().width;
+    let card_width = (width - (margin_right * 4)) / 5;
+    for (let i of cards) {
+      i.style.width = card_width + 'px';
+    }
+
+  })
+}
+//#endregion
