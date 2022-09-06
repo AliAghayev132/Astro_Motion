@@ -19,27 +19,27 @@
             <div class="navbar__main">
                 <nav>
                     <div class="nav__left">
-                        <h1 class="logo ">Astro Motion</h1>
+                            <h1 class="logo ">Astro Motion</h1>
                     </div>
                     <div class="nav__right">
                         <button id="toggle__btn" class="nav__toggle__button">
                             <span></span>
                         </button>
                         <ul class="navbar__items">
-                            <li class="nav__item">
-                                <a id="home" class="color--green">Home</a>
+                            <li id="home" class="nav__item ">
+                                <a class="color--green">Home</a>
                                 <div class="circle bg_color--green"></div>
                             </li>
-                            <li class="nav__item">
-                                <a id="gallery">Gallery</a>
+                            <li id="gallery" class="nav__item">
+                                <a>Gallery</a>
                                 <div class="circle"></div>
                             </li>
-                            <li class="nav__item">
-                                <a id="about">About</a>
+                            <li id="about" class="nav__item">
+                                <a>About</a>
                                 <div class="circle"></div>
                             </li>
-                            <li class="nav__item">
-                                <a id="contact">Contact</a>
+                            <li id="contact" class="nav__item">
+                                <a>Contact</a>
                                 <div class="circle"></div>
                             </li>
                         </ul>
@@ -83,7 +83,7 @@
             </section>
             <section class="section__gallery">
                 <div class="gallery__main">
-                    <div class="gallery__content">
+                    <div class="gallery__content" style="--per-view:5">
                         <div class="gallery__card">
                             <img class="gallery__card__image" src="src/img/gallery-img-01.jpg">
                             <div class="gallery__card--dark">
@@ -143,10 +143,10 @@
                     <div class="circle circle--left-top"></div>
                     <div class="circle circle--right-top"></div>
                 </div>
-                <div class="gallery__arrow--left">
+                <div id="arrow__left" class="gallery__arrow--left">
                     <img src="./src/img/left-arrow.svg">
                 </div>
-                <div class="gallery__arrow--right">
+                <div id="arrow__right" class="gallery__arrow--right">
                     <img src="./src/img/right-arrow.svg">
                 </div>
             </section>

@@ -76,6 +76,7 @@ video {
 }
 
 .circle {
+    pointer-events: none;
     position: absolute;
     width: 20px;
     bottom: -10px;
@@ -300,19 +301,19 @@ nav {
     overflow: hidden;
 }
 .gallery__content{
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - (25px * (var(--per-view) - 1)))/ var(--per-view));
+    grid-gap: 25px;
     position: relative;
     transition: .3s ease all;
 }
 .gallery__card{
-
     display: flex;
     overflow: hidden;
-    max-width: 240px;
     background-color: red;
     color: white;
     position: relative;
-    margin: 0 10px;
 }
 
 .gallery__card__description{
@@ -401,6 +402,9 @@ nav {
 .contact__row__1 {
     display: flex;
     flex-wrap: wrap;
+}
+.nav__item a{
+    pointer-events: none;
 }
 
 .contact__row__1__right {
