@@ -525,6 +525,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 1s ease all;
 }
 .load__box{
     width: 150px;
@@ -535,7 +536,7 @@ footer {
 }
 .removeload{
     opacity: 0;
-    transition: 0.3s ease all;
+    transition: 1s ease all;
 }
 @keyframes pulse {
     0%{

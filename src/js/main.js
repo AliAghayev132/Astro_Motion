@@ -93,7 +93,7 @@ const section = {
   gallery: qS(".section__gallery"),
   about: qS(".section__about"),
   contact: qS(".section__contact"),
-  load:qS("#loadscreen")
+  load: qS("#loadscreen")
 },
   video = qS("#video");
 let currentid = "home";
@@ -117,9 +117,7 @@ function addEventListeners() {
   video.addEventListener('loadeddata', e => {
     if (video.readyState >= 3) {
       section.load.classList.add("removeload");
-      setTimeout(()=>{
-        section.load.remove("display--block",300);
-      })
+      setTimeout(() =>{ section.load.remove("display--block")}, 1000)
     }
   })
 }
