@@ -306,7 +306,8 @@ nav {
     grid-auto-columns: calc((100% - (25px * (var(--per-view) - 1)))/ var(--per-view));
     grid-gap: 25px;
     position: relative;
-    transition: .3s ease all;
+    transition: .3s;
+
 }
 .gallery__card{
     display: flex;
@@ -352,15 +353,20 @@ nav {
     transform: scale(1.1,1.1);
 }
 .gallery__arrow--left{
+    cursor: pointer;
     position: absolute;
     top: 50%;
-    left: 0;
+    left: -30px;
     width: 30px;
 }
+img{
+    pointer-events: none;
+}
 .gallery__arrow--right  {
+    cursor:pointer;
     position: absolute;
     top: 50%;
-    right: 0;
+    right: -30px;
     width: 30px;
 }
 /* #endregion */

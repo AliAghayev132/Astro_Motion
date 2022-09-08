@@ -1,3 +1,71 @@
+class Carousel {
+  constructor(par) {
+    this.content = qS((par.content));
+    this.main = qS(par.main);
+    this.cards = this.content.children;
+    this.system = par.system;
+    this.totalScroll = this.system.perView;
+
+  }
+  updateCarousel() {
+    const screens = this.system.screens,
+      cards = this.system.cardsPerView;
+    for (let i in cards) {
+      if (this.main.offsetWidth > screens[i]) {
+        this.content.style.setProperty("--per-view", cards[i]);
+        break;
+      }
+    }
+    this.balanceCarousel();
+  }
+  moveCarouselRight() {
+    this.content.style.transition = '.3s';
+    this.content.style.left = '0px';
+    ++this.totalScroll;
+    if (this.totalScroll == this.cards.length - this.system.perView + 1) {
+      this.totalScroll = this.system.perView + 1;
+      this.content.style.transition = '0s';
+      this.content.style.left = `-${(this.cards[0].offsetWidth + this.system.gap) * (this.totalScroll - 1)}px`;
+    }
+    this.content.style.left = `-${(this.cards[0].offsetWidth + this.system.gap) * this.totalScroll}px`;
+    this.content.style.transition = '.3s';
+  }
+  moveCarouselLeft() {
+    this.content.style.transition = '.3s';
+    this.content.style.left = '0px';
+    --this.totalScroll;
+    if (this.totalScroll == -1) {
+      this.content.style.transition = '0s';
+      this.totalScroll = this.cards.length - 2 * this.system.perView - 1;
+      this.content.style.left = `-${(this.cards[0].offsetWidth + this.system.gap) * (this.totalScroll + 1)}px`;
+    }
+    this.content.style.left = `-${(this.cards[0].offsetWidth + this.system.gap) * this.totalScroll}px`;
+    this.content.style.transition = '.3s';
+    console.log(this.totalScroll);
+  }
+
+  balanceCarousel() {
+    for (let i = 0; i < this.system.perView; ++i) {
+      this.content.insertAdjacentHTML("beforeend", this.cards[i].outerHTML);
+    }
+    for (let i = 0; i < this.system.perView; ++i) {
+      this.content.insertAdjacentHTML("afterbegin", this.cards[this.cards.length - i - 1 - this.system.perView].outerHTML);
+    }
+    this.content.style.left = `-${(this.cards[0].offsetWidth + this.system.gap) * this.totalScroll}px`;
+  }
+}
+const carousel = new Carousel(
+  {
+    content: ".gallery__content",
+    main: ".gallery__main",
+    system: {
+      cardsPerView: [5, 4, 3, 2, 1],
+      screens: [1200, 800, 600, 400, 300],
+      gap: 25,
+      perView: 5,
+    }
+  }
+);
 // #region Custom Js
 function qS(par) {
   return document.querySelector(par);
@@ -15,11 +83,6 @@ const section = {
   gallery: qS(".section__gallery"),
   about: qS(".section__about"),
   contact: qS(".section__contact")
-},
-SIZES = {
-  cards:[5, 4, 3, 2, 1],
-  screens:[1200, 800, 600, 400, 300],
-  margin:25,
 };
 let currentid = "home";
 // #endregion
@@ -32,15 +95,12 @@ function addEventListeners() {
     } else if (id === "toggle__btn") {
       qS(".navbar__items").classList.toggle("position__abs__menu");
     } else if (id === "arrow__left") {
-      cardMove(-1);
+      carousel.moveCarouselLeft();
     } else if (id === "arrow__right") {
-      cardMove(1);
+      carousel.moveCarouselRight();
     }
   });
-  window.addEventListener("resize", () => {
-    console.log("Salam");
-    updateCarousel(SIZES.cards,SIZES.screens,SIZES.margin);
-  })
+  window.addEventListener('resize', () => carousel.updateCarousel());
 }
 //#endregion
 // #region UpdatePage
@@ -53,8 +113,9 @@ function updatePage(page) {
   classRemove(section[currentid], "display--block");
   classAdd(section[page], "display--block");
 
-  if (page === "gallery")
-    updateCarousel(SIZES.cards,SIZES.screens,SIZES.margin);
+  if (page === "gallery") {
+    carousel.updateCarousel();
+  }
 
   currentid = page;
 
@@ -66,38 +127,4 @@ function updatePage(page) {
 
 }
 // #endregion
-
-
-//!Sonrada Marginidə qoş avto
-//#region Carousel 
-function updateCarousel(visible_cards, widths, margin) {
-  const main = document.querySelector('.gallery__main').getBoundingClientRect().width,
-  content = document.querySelector('.gallery__content');
-  for(let i in visible_cards){
-    if(main > widths[i]){
-      content.style.setProperty("--per-view",visible_cards[i]);
-      break;
-    }
-  }
-}
-//#endregion
-function cardMove(par) {
-  let nextposition;
-  if (par === -1) {
-    startCard -= 3;
-    if (startCard < 0) {
-      startCard = 0;
-      nextposition = (startCard * card_width);
-      content.style.transform = `translateX(${-nextposition}px)`;
-    } else {
-      nextposition = (startCard * card_width) + (startCard) * card_margin;
-      content.style.transform = `translateX(${-nextposition}px)`;
-    }
-  } else {
-    let temp = cards.length - visible_card;
-    startCard = startCard + 3 > temp ? temp : startCard + 3;
-    nextposition = (startCard * card_width) + (startCard - 1) * card_margin;
-    content.style.transform = `translateX(${-nextposition}px)`;
-  }
-}
 addEventListeners();
