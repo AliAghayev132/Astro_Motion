@@ -516,6 +516,7 @@ footer {
 /* #endregion */
 /* #region Load */
 .load{
+    display: none;
     position: fixed;
     width: 100vw;
     height: 100vh;

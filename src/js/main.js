@@ -117,6 +117,9 @@ function addEventListeners() {
   video.addEventListener('loadeddata', e => {
     if (video.readyState >= 3) {
       section.load.classList.add("removeload");
+      setTimeout(()=>{
+        section.load.remove("display--block",300);
+      })
     }
   })
 }
