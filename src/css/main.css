@@ -276,9 +276,7 @@ nav {
     justify-content: center;
 }
 
-.section__gallery{
-    position: relative;
-}
+
 .home__button {
     border: none;
     margin-top: 25px;
@@ -312,7 +310,6 @@ nav {
 .gallery__card{
     display: flex;
     overflow: hidden;
-    background-color: red;
     color: white;
     position: relative;
 }
@@ -353,21 +350,23 @@ nav {
     transform: scale(1.1,1.1);
 }
 .gallery__arrow--left{
+    font-size: 50px;
+    color: white;
     cursor: pointer;
     position: absolute;
     top: 50%;
-    left: -30px;
-    width: 30px;
+    left: 1.5%;
 }
-img{
+i{
     pointer-events: none;
 }
 .gallery__arrow--right  {
+    font-size: 50px;
+    color: white;
     cursor:pointer;
     position: absolute;
     top: 50%;
-    right: -30px;
-    width: 30px;
+    right:1.5%;
 }
 /* #endregion */
 /* #region About */
@@ -515,7 +514,46 @@ footer {
 }
 
 /* #endregion */
-
+/* #region Load */
+.load{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.load__box{
+    width: 150px;
+    height: 150px;
+    border: 15px solid white;
+    box-shadow: 0 0 15px white;
+    animation: loadbox 2s infinite,pulse 2s infinite alternate;
+}
+.removeload{
+    opacity: 0;
+    transition: 0.3s ease all;
+}
+@keyframes pulse {
+    0%{
+        box-shadow: 0 0 15px white;
+    }
+    100%{
+        box-shadow: 0 0 55px 30px white;
+    }
+}
+@keyframes loadbox {
+    0%{
+        box-shadow: 0 0 15px white;
+    }
+    100%{
+        box-shadow: 0 0 35px 20px white;
+        transform: rotate(360deg);
+    }
+}
+/* #endregion */
 @keyframes fadein {
     from {
         opacity: 0;

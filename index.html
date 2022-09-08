@@ -7,10 +7,16 @@
     <title>Astro Motion</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='src/css/main.css'>
+    <script src="https://kit.fontawesome.com/fd16f8a5c5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <video autoplay muted loop>
+    <div class="load" id="loadscreen">
+        <div class="load__box">
+
+        </div>
+    </div>
+    <video autoplay muted loop id="video">
         <source src="src/video/1.mp4" type="video/mp4">
     </video>
     <div class="container">
@@ -143,10 +149,10 @@
                     <div class="circle circle--right-top"></div>
                 </div>
                 <div id="arrow__left" class="gallery__arrow--left">
-                    <img src="./src/img/left-arrow.svg">
+                    <i class="fa-solid fa-chevron-left"></i>
                 </div>
                 <div id="arrow__right" class="gallery__arrow--right">
-                    <img src="./src/img/right-arrow.svg">
+                    <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </section>
             <section class="section__about ">

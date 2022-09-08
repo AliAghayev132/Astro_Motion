@@ -5,7 +5,6 @@ class Carousel {
     this.cards = this.content.children;
     this.system = par.system;
     this.totalScroll = this.system.perView;
-
   }
   updateCarousel() {
     const screens = this.system.screens,
@@ -43,7 +42,6 @@ class Carousel {
     this.content.style.transition = '.3s';
     console.log(this.totalScroll);
   }
-
   balanceCarousel() {
     for (let i = 0; i < this.system.perView; ++i) {
       this.content.insertAdjacentHTML("beforeend", this.cards[i].outerHTML);
@@ -51,6 +49,18 @@ class Carousel {
     for (let i = 0; i < this.system.perView; ++i) {
       this.content.insertAdjacentHTML("afterbegin", this.cards[this.cards.length - i - 1 - this.system.perView].outerHTML);
     }
+    this.content.style.left = `-${(this.cards[0].offsetWidth + this.system.gap) * this.totalScroll}px`;
+  }
+  resetCarousel() {
+    const screens = this.system.screens,
+      cards = this.system.cardsPerView;
+    for (let i in cards) {
+      if (this.main.offsetWidth > screens[i]) {
+        this.content.style.setProperty("--per-view", cards[i]);
+        break;
+      }
+    }
+    this.totalScroll = this.system.perView;
     this.content.style.left = `-${(this.cards[0].offsetWidth + this.system.gap) * this.totalScroll}px`;
   }
 }
@@ -82,8 +92,10 @@ const section = {
   home: qS(".section__home"),
   gallery: qS(".section__gallery"),
   about: qS(".section__about"),
-  contact: qS(".section__contact")
-};
+  contact: qS(".section__contact"),
+  load:qS("#loadscreen")
+},
+  video = qS("#video");
 let currentid = "home";
 // #endregion
 // #region Adding Events
@@ -100,7 +112,13 @@ function addEventListeners() {
       carousel.moveCarouselRight();
     }
   });
-  window.addEventListener('resize', () => carousel.updateCarousel());
+  window.addEventListener('resize', () => carousel.resetCarousel());
+
+  video.addEventListener('loadeddata', e => {
+    if (video.readyState >= 3) {
+      section.load.classList.add("removeload");
+    }
+  })
 }
 //#endregion
 // #region UpdatePage
@@ -113,10 +131,9 @@ function updatePage(page) {
   classRemove(section[currentid], "display--block");
   classAdd(section[page], "display--block");
 
-  if (page === "gallery") {
+  if (page === "gallery" && currentid !== page) {
     carousel.updateCarousel();
   }
-
   currentid = page;
 
   classRemove(lastItem.children[0], "color--green");
