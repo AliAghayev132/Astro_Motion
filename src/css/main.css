@@ -2,10 +2,14 @@
     --greennav: #9f6;
     --dfontsize: 19px;
 }
+
 /* #region Custom Cursor */
-.nav__item,.gallery__arrow--left,.gallery__arrow--right{
+.nav__item,
+.gallery__arrow--left,
+.gallery__arrow--right {
     cursor: url("../img/cursor1.png") 0 0, auto !important;
 }
+
 /* #endregion */
 /* #region Custom Scroll */
 
@@ -30,9 +34,11 @@
 i {
     pointer-events: none;
 }
+
 ::placeholder {
     color: white;
 }
+
 @font-face {
     font-family: 'Source Sans Pro';
     src: url("../fonts/SourceSansProLight.ttf");
@@ -52,6 +58,11 @@ i {
     list-style-type: none;
     font-weight: 300;
     line-height: 1.8;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
@@ -384,12 +395,15 @@ nav {
     position: absolute;
     top: 45%;
 }
-.gallery__arrow--left{
+
+.gallery__arrow--left {
     left: -1.5%;
 }
+
 .gallery__arrow--right {
     right: -1.5% !important;
 }
+
 /* #endregion */
 /* #region About */
 .about__main {
@@ -545,8 +559,16 @@ footer {
     justify-content: center;
     align-items: center;
     transition: 1s ease all;
+    flex-direction: column;
+    gap: 100px;
 }
-
+.load__title{
+    font-family: monospace;
+    color: white;
+    font-size: 60px;
+    animation: pulsetitle 1s infinite alternate;
+    font-weight: 900;
+}
 .load__box {
     width: 150px;
     height: 150px;
@@ -559,8 +581,17 @@ footer {
     opacity: 0;
     transition: 1s ease all;
 }
+
 /* #endregion */
 /* #region Animations */
+@keyframes pulsetitle {
+    0%{
+        text-shadow: 0 0 15px white;
+    }
+    100%{
+        text-shadow: 0 0 55px white;
+    }
+}
 @keyframes pulse {
     0% {
         box-shadow: 0 0 15px white;
@@ -570,6 +601,7 @@ footer {
         box-shadow: 0 0 55px 30px white;
     }
 }
+
 @keyframes fadein {
     from {
         opacity: 0;
@@ -579,6 +611,7 @@ footer {
         opacity: 1;
     }
 }
+
 @keyframes loadbox {
     0% {
         box-shadow: 0 0 15px white;
@@ -589,6 +622,7 @@ footer {
         transform: rotate(360deg);
     }
 }
+
 /* #endregion */
 /* #region Responsive */
 @media only screen and (max-width: 1230px) {
@@ -691,4 +725,5 @@ footer {
         text-align: justify;
     }
 }
+
 /* #endregion */
