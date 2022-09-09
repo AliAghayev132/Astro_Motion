@@ -40,7 +40,6 @@ class Carousel {
     }
     this.content.style.left = `-${(this.cards[0].offsetWidth + this.system.gap) * this.totalScroll}px`;
     this.content.style.transition = '.3s';
-    console.log(this.totalScroll);
   }
   balanceCarousel() {
     for (let i = 0; i < this.system.perView; ++i) {
@@ -97,7 +96,7 @@ const section = {
 },
   video = qS("#video");
 let currentid = "home",
-visited = false;
+  visited = false;
 // #endregion
 // #region Adding Events
 function addEventListeners() {
@@ -114,18 +113,16 @@ function addEventListeners() {
     }
   });
   window.addEventListener('resize', () => carousel.resetCarousel());
-
   video.addEventListener('loadeddata', e => {
     if (video.readyState >= 3) {
       section.load.classList.add("removeload");
-      setTimeout(() =>{ section.load.remove("display--block")}, 1000)
+      setTimeout(() => { section.load.remove("display--block") }, 1000)
     }
   })
 }
 //#endregion
 // #region UpdatePage
 function updatePage(page) {
-  console.log(page);
   page = (page === "gallery--2" ? "gallery" : page);
 
   let lastItem = qS("#" + currentid),
