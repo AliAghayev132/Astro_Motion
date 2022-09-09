@@ -96,13 +96,14 @@ const section = {
   load: qS("#loadscreen")
 },
   video = qS("#video");
-let currentid = "home";
+let currentid = "home",
+visited = false;
 // #endregion
 // #region Adding Events
 function addEventListeners() {
   document.addEventListener("click", (e) => {
     let id = e.target.getAttribute('id');
-    if (e.target.classList.contains("nav__item")) {
+    if (e.target.classList.contains("nav__item") || e.target.classList.contains("home__button")) {
       updatePage(id);
     } else if (id === "toggle__btn") {
       qS(".navbar__items").classList.toggle("position__abs__menu");
@@ -124,6 +125,7 @@ function addEventListeners() {
 //#endregion
 // #region UpdatePage
 function updatePage(page) {
+  console.log(page);
   page = (page === "gallery--2" ? "gallery" : page);
 
   let lastItem = qS("#" + currentid),
@@ -132,8 +134,9 @@ function updatePage(page) {
   classRemove(section[currentid], "display--block");
   classAdd(section[page], "display--block");
 
-  if (page === "gallery" && currentid !== page) {
+  if (page === "gallery" && !visited) {
     carousel.updateCarousel();
+    visited = true;
   }
   currentid = page;
 
