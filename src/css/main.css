@@ -553,6 +553,7 @@ footer {
     position: fixed;
     width: 100vw;
     height: 100vh;
+    text-align: center;
     background-color: black;
     z-index: 100;
     display: flex;
